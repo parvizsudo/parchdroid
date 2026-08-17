@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="AdwStatusPage" id="status_page">
+    <property name="title" translatable="yes">Checking Your System</property>
+    <property name="description" translatable="yes">Detecting Waydroid installation and kernel module support…</property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="spacing">18</property>
+        <child>
+          <object class="GtkSpinner" id="spinner">
+            <property name="spinning">True</property>
+            <property name="width-request">48</property>
+            <property name="height-request">48</property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="AdwDialog" id="gapps_dialog">
+    <property name="title" translatable="yes">Google Play Certification</property>
+    <property name="content-width">540</property>
+    <property name="content-height">620</property>
+    <property name="presentation-mode">bottom-sheet</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child type="end">
+              <object class="GtkButton" id="docs_button">
+                <property name="label" translatable="yes">Documentation</property>
+                <property name="icon-name">internet-web-browser-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <property name="content">
+          <object class="GtkScrolledWindow">
+            <property name="hscrollbar-policy">never</property>
+            <property name="vscrollbar-policy">automatic</property>
+            <property name="vexpand">True</property>
+            <property name="child">
+              <object class="AdwClamp">
+                <property name="maximum-size">500</property>
+                <property name="margin-top">20</property>
+                <property name="margin-bottom">24</property>
+                <property name="margin-start">16</property>
+                <property name="margin-end">16</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">20</property>
+
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">To access the Google Play Store on Waydroid, your virtual Android device needs to be registered with Google.</property>
+                        <property name="wrap">True</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Registration Steps</property>
+
+                        <!-- Step 1 -->
+                        <child>
+                          <object class="AdwActionRow">
+                            <property name="title" translatable="yes">1. Start Waydroid</property>
+                            <property name="subtitle" translatable="yes">Ensure Waydroid is running in the background</property>
+                            <child type="prefix">
+                              <object class="GtkImage">
+                                <property name="icon-name">media-playback-start-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+
+                        <!-- Step 2 (Automated Extraction) -->
+                        <child>
+                          <object class="AdwActionRow" id="id_row">
+                            <property name="title" translatable="yes">2. Get Android Device ID</property>
+                            <property name="subtitle" translatable="yes">Click to automatically extract and copy ID</property>
+                            <child type="prefix">
+                              <object class="GtkImage">
+                                <property name="icon-name">edit-copy-symbolic</property>
+                              </object>
+                            </child>
+                            <child type="suffix">
+                              <object class="GtkButton" id="copy_id_button">
+                                <property name="label" translatable="yes">Copy ID</property>
+                                <property name="valign">center</property>
+                                <style>
+                                  <class name="suggested-action"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+
+                        <!-- Step 3 -->
+                        <child>
+                          <object class="AdwActionRow" id="register_row">
+                            <property name="title" translatable="yes">3. Register with Google</property>
+                            <property name="subtitle" translatable="yes">Paste the copied Android ID on the Google portal</property>
+                            <child type="prefix">
+                              <object class="GtkImage">
+                                <property name="icon-name">internet-web-browser-symbolic</property>
+                              </object>
+                            </child>
+                            <child type="suffix">
+                              <object class="GtkButton" id="open_portal_button">
+                                <property name="label" translatable="yes">Open Portal</property>
+                                <property name="valign">center</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+
+                        <!-- Step 4 -->
+                        <child>
+                          <object class="AdwActionRow">
+                            <property name="title" translatable="yes">4. Wait and Restart</property>
+                            <property name="subtitle" translatable="yes">Google approval takes 10–20 mins, then restart session</property>
+                            <child type="prefix">
+                              <object class="GtkImage">
+                                <property name="icon-name">emblem-synchronizing-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+
+                      </object>
+                    </child>
+
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </property>
+      </object>
+    </property>
+  </object>
+</interface>

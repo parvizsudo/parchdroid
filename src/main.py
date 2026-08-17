@@ -14,10 +14,8 @@ import os
 import gettext
 import locale
 
-LOCALE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'locale')
-if not os.path.exists(os.path.join(LOCALE_DIR, 'fa', 'LC_MESSAGES', 'parchdroid.mo')):
-    LOCALE_DIR = '/usr/share/locale'
-gettext.install('parchdroid', LOCALE_DIR)
+from core.paths import get_locale_dir
+gettext.install('parchdroid', get_locale_dir())
 
 from ui.main_window import MainWindow
 

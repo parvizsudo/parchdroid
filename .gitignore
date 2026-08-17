@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.tar.gz
+*.tar.xz
+*.pkg.tar.zst
+/pkg/
+/srcdir/

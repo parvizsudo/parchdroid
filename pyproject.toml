@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "parchdroid"
-version = "1.0.0"
+version = "1.1.0"
 description = "Android App Support for Parch Linux - Waydroid Manager"
 authors = [{name = "Parch Linux Team"}]
 license = {text = "GPL-3.0-only"}

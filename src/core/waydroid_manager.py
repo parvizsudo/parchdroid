@@ -157,6 +157,52 @@ class WaydroidManager(GObject.Object):
             pass
         return "Not available"
 
+    def get_android_id(self):
+        """Extract Google Android ID for Play certification"""
+        try:
+            cmd = ['waydroid', 'shell',
+                   'ANDROID_RUNTIME_ROOT=/apex/com.android.runtime '
+                   'ANDROID_DATA=/data '
+                   'ANDROID_TZDATA_ROOT=/apex/com.android.tzdata '
+                   'ANDROID_I18N_ROOT=/apex/com.android.i18n '
+                   'sqlite3 /data/data/com.google.android.gsf/databases/gservices.db '
+                   '"select * from main where name = \\"android_id\\";"']
+            result = subprocess.run(['waydroid', 'shell', 'sqlite3', '/data/data/com.google.android.gsf/databases/gservices.db', 'select value from main where name = "android_id";'],
+                                    capture_output=True, text=True, timeout=8)
+            if result.returncode == 0 and result.stdout.strip():
+                val = result.stdout.strip().splitlines()[-1].strip()
+                if '|' in val:
+                    val = val.split('|')[-1].strip()
+                if val:
+                    return val
+
+            # Fallback direct shell
+            res2 = subprocess.run(['sudo', 'waydroid', 'shell', 'sqlite3', '/data/data/com.google.android.gsf/databases/gservices.db', 'select * from main where name = "android_id";'],
+                                  capture_output=True, text=True, timeout=8)
+            if res2.returncode == 0 and res2.stdout.strip():
+                match = re.search(r'android_id\|(\d+)', res2.stdout)
+                if match:
+                    return match.group(1)
+        except Exception as e:
+            self.log(f"Error reading Android ID: {e}")
+        return None
+
+    def get_multi_window_enabled(self):
+        """Check if multi-window mode is enabled"""
+        try:
+            result = subprocess.run(['waydroid', 'prop', 'get', 'persist.waydroid.multi_windows'],
+                                    capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                return result.stdout.strip().lower() == 'true'
+        except Exception:
+            pass
+        return False
+
+    def set_multi_window_enabled(self, enabled: bool):
+        """Set multi-window mode"""
+        val = 'true' if enabled else 'false'
+        return self.set_waydroid_prop('persist.waydroid.multi_windows', val)
+
     def get_waydroid_props(self):
         """Get all persist.waydroid.* properties"""
         props = {}

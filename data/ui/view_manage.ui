@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkScrolledWindow" id="manage_root">
+    <property name="hscrollbar-policy">never</property>
+    <property name="vscrollbar-policy">automatic</property>
+    <property name="vexpand">True</property>
+    <property name="child">
+      <object class="AdwClamp">
+        <property name="maximum-size">720</property>
+        <property name="margin-top">16</property>
+        <property name="margin-bottom">32</property>
+        <property name="margin-start">16</property>
+        <property name="margin-end">16</property>
+        <property name="child">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">24</property>
+            
+            <!-- Status Banner -->
+            <child>
+              <object class="AdwBanner" id="status_banner">
+                <property name="revealed">False</property>
+              </object>
+            </child>
+
+            <!-- Quick Launch Section -->
+            <child>
+              <object class="AdwPreferencesGroup" id="launch_group">
+                <property name="title" translatable="yes">Quick Launch</property>
+                <child>
+                  <object class="AdwActionRow" id="launch_row">
+                    <property name="title" translatable="yes">Launch Android Environment</property>
+                    <property name="subtitle" translatable="yes">Open the Waydroid graphical interface</property>
+                    <property name="activatable">True</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">media-playback-start-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton" id="launch_button">
+                        <property name="label" translatable="yes">Launch</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="suggested-action"/>
+                          <class name="pill"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- Session & Service Controls -->
+            <child>
+              <object class="AdwPreferencesGroup" id="session_group">
+                <property name="title" translatable="yes">Session Control</property>
+                <child>
+                  <object class="AdwSwitchRow" id="session_switch_row">
+                    <property name="title" translatable="yes">Waydroid Session</property>
+                    <property name="subtitle" translatable="yes">Running container and session services</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">applications-system-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="restart_row">
+                    <property name="title" translatable="yes">Restart Session</property>
+                    <property name="subtitle" translatable="yes">Restart Waydroid container and display session</property>
+                    <property name="activatable">True</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">view-refresh-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton" id="restart_button">
+                        <property name="label" translatable="yes">Restart</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- Android Integration & Settings -->
+            <child>
+              <object class="AdwPreferencesGroup" id="settings_group">
+                <property name="title" translatable="yes">Integration and Settings</property>
+                <child>
+                  <object class="AdwSwitchRow" id="multi_window_row">
+                    <property name="title" translatable="yes">Multi-Window Mode</property>
+                    <property name="subtitle" translatable="yes">Open Android apps as individual desktop windows</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">window-new-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- Application Management -->
+            <child>
+              <object class="AdwPreferencesGroup" id="apps_group">
+                <property name="title" translatable="yes">Application Management</property>
+                <child>
+                  <object class="AdwActionRow" id="install_apk_row">
+                    <property name="title" translatable="yes">Install APK File</property>
+                    <property name="subtitle" translatable="yes">Sideload an Android package (.apk)</property>
+                    <property name="activatable">True</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">document-open-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton" id="install_apk_button">
+                        <property name="label" translatable="yes">Choose File…</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- System Images -->
+            <child>
+              <object class="AdwPreferencesGroup" id="images_group">
+                <property name="title" translatable="yes">System Images</property>
+                <property name="description" translatable="yes">Download or switch between Android system image variants</property>
+                <child>
+                  <object class="AdwActionRow" id="vanilla_row">
+                    <property name="title" translatable="yes">Vanilla Android</property>
+                    <property name="subtitle" translatable="yes">Clean LineageOS image without Google services</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">emblem-default-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton" id="vanilla_button">
+                        <property name="label" translatable="yes">Download</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="gapps_row">
+                    <property name="title" translatable="yes">Google Apps (GAPPS)</property>
+                    <property name="subtitle" translatable="yes">Includes Google Play Store and Google Play Services</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">emblem-shared-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton" id="gapps_button">
+                        <property name="label" translatable="yes">Download</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- Detailed Status Information -->
+            <child>
+              <object class="AdwPreferencesGroup" id="info_group">
+                <property name="title" translatable="yes">System Information</property>
+                <child>
+                  <object class="AdwExpanderRow" id="status_expander">
+                    <property name="title" translatable="yes">Detailed Status and Diagnostics</property>
+                    <property name="subtitle" translatable="yes">Container, network, and system properties</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">emblem-system-symbolic</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwActionRow" id="info_session_row">
+                        <property name="title" translatable="yes">Session Status</property>
+                        <property name="subtitle" translatable="yes">Unknown</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwActionRow" id="info_container_row">
+                        <property name="title" translatable="yes">Container Status</property>
+                        <property name="subtitle" translatable="yes">Unknown</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwActionRow" id="info_version_row">
+                        <property name="title" translatable="yes">Android Version</property>
+                        <property name="subtitle" translatable="yes">Unknown</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwActionRow" id="info_gapps_row">
+                        <property name="title" translatable="yes">Google Apps</property>
+                        <property name="subtitle" translatable="yes">Not installed</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwActionRow" id="info_ip_row">
+                        <property name="title" translatable="yes">IP Address</property>
+                        <property name="subtitle" translatable="yes">Not available</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <!-- Maintenance & Reset -->
+            <child>
+              <object class="AdwPreferencesGroup" id="danger_group">
+                <property name="title" translatable="yes">Maintenance</property>
+                <child>
+                  <object class="AdwActionRow" id="reset_row">
+                    <property name="title" translatable="yes">Reset Waydroid</property>
+                    <property name="subtitle" translatable="yes">Delete container data and re-download fresh images</property>
+                    <property name="activatable">True</property>
+                    <child type="prefix">
+                      <object class="GtkImage">
+                        <property name="icon-name">user-trash-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton" id="reset_button">
+                        <property name="label" translatable="yes">Reset…</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </object>
+</interface>

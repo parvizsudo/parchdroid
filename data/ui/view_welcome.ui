@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="GtkScrolledWindow" id="welcome_root">
+    <property name="hscrollbar-policy">never</property>
+    <property name="vscrollbar-policy">automatic</property>
+    <property name="vexpand">True</property>
+    <property name="child">
+      <object class="AdwStatusPage" id="status_page">
+        <property name="icon-name">phone-symbolic</property>
+        <property name="title" translatable="yes">Android App Support</property>
+        <property name="description" translatable="yes">Run Android applications natively on your Parch Linux system with Waydroid</property>
+        <property name="child">
+          <object class="AdwClamp">
+            <property name="maximum-size">680</property>
+            <property name="margin-top">12</property>
+            <property name="margin-bottom">24</property>
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+            <property name="child">
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="spacing">24</property>
+                
+                <!-- System Status Card -->
+                <child>
+                  <object class="AdwPreferencesGroup" id="status_group">
+                    <property name="title" translatable="yes">System Status</property>
+                    <property name="description" translatable="yes">Detected configuration and prerequisites</property>
+                    
+                    <child>
+                      <object class="AdwActionRow" id="repo_row">
+                        <property name="title" translatable="yes">Package Repository</property>
+                        <property name="subtitle" translatable="yes">Checking…</property>
+                        <child type="prefix">
+                          <object class="GtkImage">
+                            <property name="icon-name">folder-download-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    
+                    <child>
+                      <object class="AdwActionRow" id="kernel_row">
+                        <property name="title" translatable="yes">Kernel Module Support</property>
+                        <property name="subtitle" translatable="yes">Checking…</property>
+                        <child type="prefix">
+                          <object class="GtkImage">
+                            <property name="icon-name">computer-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <!-- Action Card -->
+                <child>
+                  <object class="AdwPreferencesGroup" id="action_group">
+                    <property name="title" translatable="yes">Setup</property>
+                    <child>
+                      <object class="AdwActionRow" id="install_row">
+                        <property name="title" translatable="yes">Install Waydroid</property>
+                        <property name="subtitle" translatable="yes">Download and configure Waydroid on your system</property>
+                        <property name="activatable">True</property>
+                        <child type="prefix">
+                          <object class="GtkImage">
+                            <property name="icon-name">folder-download-symbolic</property>
+                          </object>
+                        </child>
+                        <child type="suffix">
+                          <object class="GtkButton" id="install_button">
+                            <property name="label" translatable="yes">Install</property>
+                            <property name="valign">center</property>
+                            <style>
+                              <class name="suggested-action"/>
+                              <class name="pill"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </property>
+      </object>
+    </property>
+  </object>
+</interface>

@@ -3,7 +3,7 @@
 
 pkgname=parchdroid
 _pkgname=parchdroid
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Android App Support for Parch Linux, Waydroid Manager"
 arch=('any')
@@ -53,6 +53,9 @@ LAUNCHER
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m644 data/icons/hicolor/scalable/apps/com.parchlinux.parchdroid.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+
+    install -dm755 "${pkgdir}/usr/share/parchdroid"
+    cp -r data/ui "${pkgdir}/usr/share/parchdroid/"
 
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     install -m644 data/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"

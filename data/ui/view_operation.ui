@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="AdwClamp" id="operation_root">
+    <property name="maximum-size">800</property>
+    <property name="vexpand">True</property>
+    <property name="margin-top">20</property>
+    <property name="margin-bottom">20</property>
+    <property name="margin-start">20</property>
+    <property name="margin-end">20</property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">16</property>
+        
+        <!-- Header status row -->
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="spacing">12</property>
+            <child>
+              <object class="GtkSpinner" id="status_spinner">
+                <property name="spinning">True</property>
+                <property name="width-request">24</property>
+                <property name="height-request">24</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="status_label">
+                <property name="label" translatable="yes">Preparing…</property>
+                <property name="xalign">0</property>
+                <property name="hexpand">True</property>
+                <style>
+                  <class name="title-3"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <!-- Progress bar -->
+        <child>
+          <object class="GtkProgressBar" id="progress_bar">
+            <property name="show-text">False</property>
+            <style>
+              <class name="osd"/>
+            </style>
+          </object>
+        </child>
+
+        <!-- Console / Terminal Container Frame -->
+        <child>
+          <object class="GtkFrame" id="terminal_frame">
+            <property name="vexpand">True</property>
+            <style>
+              <class name="view"/>
+            </style>
+          </object>
+        </child>
+
+        <!-- Bottom Action Controls -->
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="halign">end</property>
+            <property name="spacing">8</property>
+            <child>
+              <object class="GtkButton" id="cancel_button">
+                <property name="label" translatable="yes">Cancel</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="done_button">
+                <property name="label" translatable="yes">Done</property>
+                <property name="visible">False</property>
+                <style>
+                  <class name="suggested-action"/>
+                  <class name="pill"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </object>
+</interface>
